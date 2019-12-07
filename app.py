@@ -1,6 +1,6 @@
 import os
 import sys
-import numpy as np
+#import numpy as np
 from flask import Flask, jsonify, request, abort, send_file
 from dotenv import load_dotenv
 from linebot import LineBotApi, WebhookParser
@@ -74,7 +74,7 @@ def callback():
         
         content="{}:{}".format(event.source.user_id,event.message.text)
     # read mem    
-        info=np.genfromtxt('mem.csv',dtype=str) 
+    #    info=np.genfromtxt('mem.csv',dtype=str) 
     
     # check user 
     #    if info[:,0]!='content':
@@ -83,7 +83,7 @@ def callback():
     #        info[info[:,0]==content,1]=info[info[:,0]==content,1]+1
     
     # save mem    
-        np.savetxt('mem.csv', info,fmt ='%s')
+    #    np.savetxt('mem.csv', info,fmt ='%s')
 
         line_bot_api.reply_message(
             event.reply_token, TextSendMessage(text="QQ"+event.message.text+content)
