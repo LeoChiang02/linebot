@@ -77,10 +77,10 @@ def callback():
         info=np.genfromtxt('mem.csv',dtype=str) 
     
     # check user 
-        if info[:,0]!='content':
-            info=np.append(info,[[content,0]],axis=0)
-        else 
-            info[info[:,0]==content,1]=info[info[:,0]==content,1]+1
+    #    if info[:,0]!='content':
+    #        info=np.append(info,[[content,0]],axis=0)
+    #    else 
+    #        info[info[:,0]==content,1]=info[info[:,0]==content,1]+1
     
     # save mem    
         np.savetxt('mem.csv', info,fmt ='%s')
