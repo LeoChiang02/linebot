@@ -72,7 +72,7 @@ def callback():
         if not isinstance(event.message, TextMessage):
             continue
         
-        content="{}:{}".format(event.source.user_id,event.message.text)
+        content=format(event.source.user_id)
     # read mem    
     #    info=np.genfromtxt('mem.csv',dtype=str) 
     
