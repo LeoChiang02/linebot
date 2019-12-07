@@ -1,7 +1,7 @@
 import os
 import sys
 import csv
-#import numpy as np
+
 from flask import Flask, jsonify, request, abort, send_file
 from dotenv import load_dotenv
 from linebot import LineBotApi, WebhookParser
