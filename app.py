@@ -71,9 +71,22 @@ def callback():
             continue
         if not isinstance(event.message, TextMessage):
             continue
+        
+        content="{}:{}".format(event.source.user_id,event.message.text)
+    # read mem    
+        info=np.genfromtxt('mem.csv',dtype=str) 
+    
+    # check user 
+        if info[:,0]!='content':
+            info=np.append(info,[[content,0]],axis=0)
+        else 
+            info[info[:,0]==content,1]=info[info[:,0]==content,1]+1
+    
+    # save mem    
+        np.savetxt('mem.csv', info,fmt ='%s')
 
         line_bot_api.reply_message(
-            event.reply_token, TextSendMessage(text="QQ"+event.message.text)
+            event.reply_token, TextSendMessage(text="QQ"+event.message.text+content)
             )
 
     return "OK"
