@@ -90,13 +90,14 @@ def callback():
         except:
             error="error1"
 
-        # vertify user and recgonize stranger user
+        # vertify user and recgonize stranger 
         try:
+            info_index=-1
             for i in range(len(info)):
-                if info[i][0]!=content:
+                if info[i][0]==content:
                     info_index=i
-                if info_index==[]:
-                    info=info+[content,0]      
+            if info_index < 0:
+                info=info+[content,0]      
         except:
             error="error2"
     
@@ -109,8 +110,11 @@ def callback():
                     writer.writerow({'user_id':info[i][0], 'state':s[i][1]})
         except:
             error="error3"
-        
-        line_bot_api.reply_message(event.reply_token, TextSendMessage(text="new user"+event.message.text+error))
+            
+        if info_index < 0:
+            line_bot_api.reply_message(event.reply_token, TextSendMessage(text="hellow new user"+error))
+        else:
+            line_bot_api.reply_message(event.reply_token, TextSendMessage(text="new user"+event.message.text+error))
         
     return "OK"
 
