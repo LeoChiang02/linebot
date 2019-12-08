@@ -83,9 +83,9 @@ def callback():
                 reader=csv.DictReader(f)
                 for row in reader:
                     if row==0:
-                        info=[[row['user_id'],row['state'],row['time(min:sec)']]]
+                        info=[[row["user_id"],row["state"],row["time(min:sec)"]]]
                     else:
-                        info=info+[[row['user_id'],row['state'],row['time(min:sec)']]]
+                        info=info+[[row["user_id"],row["state"],row["time(min:sec)"]]]
 
             error="ok"
         except:
@@ -105,18 +105,19 @@ def callback():
         # save mem    
         try:
             with open('mem.csv','w') as inf:
-                writer = csv.DictWriter(inf, [row['user_id'],row['state'],row['time(min:sec)']])        
+                writer = csv.DictWriter(inf, [row["user_id"],row["state"],row["time(min:sec)"]])        
                 writer.writeheader()
                 for i in range(len(info)):
                     writer.writerow({'user_id':info[i][0], 'state':info[i][1],'time(min:sec)': '0'})
         except:
             error="error3"
-
-        if info_index < 0:
-            line_bot_api.reply_message(event.reply_token, TextSendMessage(text="hellow new user"+error))
-        else:
-            line_bot_api.reply_message(event.reply_token, TextSendMessage(text="wellcome back"+event.message.text+error))
-        
+        try:
+            if info_index < 0:
+                line_bot_api.reply_message(event.reply_token, TextSendMessage(text="hellow new user"+error))
+            else:
+                line_bot_api.reply_message(event.reply_token, TextSendMessage(text="wellcome back"+event.message.text+error))
+        except:
+            error="error3"        
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text=error))
         
     return "OK"
