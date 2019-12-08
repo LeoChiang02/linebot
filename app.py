@@ -86,7 +86,7 @@ def callback():
     # save mem    
     #    np.savetxt('mem.csv', info,fmt ='%s')
         if event.message.text=='a':
-            line_bot_api.reply_message(event.reply_token, TextSendMessage(text=succeed))
+            line_bot_api.reply_message(event.reply_token, TextSendMessage(text="succeed"))
 
         else:
             line_bot_api.reply_message(event.reply_token, TextSendMessage(text="QQ"+event.message.text+content))
