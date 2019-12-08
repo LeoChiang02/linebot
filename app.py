@@ -86,7 +86,7 @@ def callback():
 
     
     # vertify user and recgonize stranger user
-        for i in range(len(info))
+        '''for i in range(len(info))
             if info[i][0]!=content:
                 info_index=i
         if info_index==[]:
@@ -97,7 +97,7 @@ def callback():
             writer = csv.DictWriter(inf, ['user_id', 'state'])        
             writer.writeheader()
             for i in range(len(info)): 
-                writer.writerow({'user_id':info[i][0], 'state':s[i][1]})
+                writer.writerow({'user_id':info[i][0], 'state':s[i][1]})'''
 
     #    np.savetxt('mem.csv', info,fmt ='%s')
         if info_index !=[]:
