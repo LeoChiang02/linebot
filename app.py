@@ -101,10 +101,11 @@ def callback():
             with open('mem.csv','w', encoding='utf-8') as inf:
                 writer = csv.DictWriter(inf, [row['user_id'],row['state'],row['time(min:sec)']]) 
                 writer.writeheader()
+                writer.writerow({'user_id':0, 'state':1,'time(min:sec)': 2})
                 
             #for i in range(len(info)):
             #writer.writerow({'user_id':info[i][0], 'state':info[i][1],'time(min:sec)': info[i][2]})
-                             
+            inf.close()            
         except:   
             error=error+"error3"
         
