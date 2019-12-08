@@ -98,7 +98,7 @@ def callback():
         # save mem    
         try:
             
-            with open('mem.csv','w') as f:
+            with open('mem.csv','w') as inf:
 
             '''
                 writer = csv.DictWriter(f, [row['user_id'],row['state'],row['time(min:sec)']])        
