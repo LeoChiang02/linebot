@@ -75,7 +75,7 @@ def callback():
         
         content=format(event.source.user_id)
         # read mem  
-        info=[]
+        '''info=[]
         with open('mem.csv') as f:
             reader=csv.DictReader(f)
             for row in reader:
@@ -98,7 +98,7 @@ def callback():
             writer.writeheader()
             for i in range(len(info)): 
                 writer.writerow({'user_id':info[i][0], 'state':s[i][1]})
-     
+        '''
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text="new user"+event.message.text+content))
 
     return "OK"
