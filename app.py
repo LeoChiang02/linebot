@@ -74,22 +74,37 @@ def callback():
             continue
         
         content=format(event.source.user_id)
-    # read mem    
-    #    info=np.genfromtxt('mem.csv',dtype=str) 
+    # read mem  
+        info=[]
+        with open('mem.csv') as f:
+            reader=csv.DictReader(f)
+            for row in reader:
+                if row==0:
+                    info=[[row['user_id'],row['state']]
+                else:
+                    info=info+[[row['user_id'],row['state']]
+
     
-    # check user 
-    #    if info[:,0]!='content':
-    #        info=np.append(info,[[content,0]],axis=0)
-    #    else 
-    #        info[info[:,0]==content,1]=info[info[:,0]==content,1]+1
+    # vertify user and recgonize stranger user
+        for i in range(len(info))
+            if info[i][0]!=content:
+                info_index=i
+        if info_index==[]:
+            info=info+[content,0]      
     
     # save mem    
+        with open('mem.csv','w',newline='') as inf:
+            writer = csv.DictWriter(inf, ['user_id', 'state'])        
+            writer.writeheader()
+            for i in range(len(info)): 
+                writer.writerow({'user_id':info[i][0], 'state':s[i][1]})
+
     #    np.savetxt('mem.csv', info,fmt ='%s')
-        if event.message.text=='a':
-            line_bot_api.reply_message(event.reply_token, TextSendMessage(text="succeed"))
+        if info_index !=[]:
+            line_bot_api.reply_message(event.reply_token, TextSendMessage(text="hello"))
 
         else:
-            line_bot_api.reply_message(event.reply_token, TextSendMessage(text="QQ"+event.message.text+content))
+            line_bot_api.reply_message(event.reply_token, TextSendMessage(text="new user"+event.message.text+content))
 
     return "OK"
 
