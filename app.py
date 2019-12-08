@@ -94,7 +94,6 @@ def callback():
         # vertify user and recgonize stranger 
         
         try:  
-        
             for i in range(len(info)):
                 if info[i][0]==content:
                     info_index=i
