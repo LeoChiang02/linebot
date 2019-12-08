@@ -1,6 +1,6 @@
 import os
 import sys
-#import csv
+import csv
 
 from flask import Flask, jsonify, request, abort, send_file
 from dotenv import load_dotenv
@@ -99,10 +99,7 @@ def callback():
             for i in range(len(info)): 
                 writer.writerow({'user_id':info[i][0], 'state':s[i][1]})
     '''
-        if event.message.text =='a':
-            line_bot_api.reply_message(event.reply_token, TextSendMessage(text="hello"))
-
-        else:
+       
             line_bot_api.reply_message(event.reply_token, TextSendMessage(text="new user"+event.message.text+content))
 
     return "OK"
