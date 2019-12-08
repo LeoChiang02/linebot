@@ -82,9 +82,9 @@ def callback():
                 reader=csv.DictReader(f)
                 for row in reader:
                     if row==0:
-                        info=[[row['user_id'],row['state']]]
+                        info=[[row['user_id'],row['state'],row['time(min:sec)']]]
                     else:
-                        info=info+[[row['user_id'],row['state']]]
+                        info=info+[[row['user_id'],row['state'],row['time(min:sec)']]]
 
             error="ok"
         except:
@@ -104,17 +104,17 @@ def callback():
         # save mem    
         try:
             with open('mem.csv','w') as inf:
-                writer = csv.DictWriter(inf, ['user_id', 'state'])        
+                writer = csv.DictWriter(inf, [row['user_id'],row['state'],row['time(min:sec)']])        
                 writer.writeheader()
                 for i in range(len(info)):
-                        writer.writerow({'user_id':info[i][0], 'state':info[i][1]})
+                    writer.writerow({'user_id':info[i][0], 'state':info[i][1]},'time(min:sec)':0 )
         except:
             error="error3"
 
         if info_index < 0:
             line_bot_api.reply_message(event.reply_token, TextSendMessage(text="hellow new user"+error))
         else:
-            line_bot_api.reply_message(event.reply_token, TextSendMessage(text="new user"+event.message.text+error))
+            line_bot_api.reply_message(event.reply_token, TextSendMessage(text="wellcome back"+event.message.text+error))
         
     return "OK"
 
