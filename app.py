@@ -79,39 +79,32 @@ def callback():
         info=[]
         error="none"
         info_index=-1
-        try:
-            with open('mem.csv') as f:
-                reader=csv.DictReader(f)
-                for row in reader:
-                    if row==0:
-                        info=[[row['user_id'],row['state'],row['time(min:sec)']]]
-                    else:
-                        info=info+[[row['user_id'],row['state'],row['time(min:sec)']]]
-
-            error="ok"
-        except:
-            error="error1"
+        
+        with open('mem.csv') as f:
+            reader=csv.DictReader(f)
+            for row in reader:
+                if row==0:
+                    info=[[row['user_id'],row['state'],row['time(min:sec)']]]
+                else:
+                    info=info+[[row['user_id'],row['state'],row['time(min:sec)']]]
 
         # vertify user and recgonize stranger 
-        
         try:  
-            for i in range(len(info)):
-                if info[i][0]==content:
-                    info_index=i
-            if info_index < 0:
-                info=info+[content,0,0]   
-            error=error+"ok"   
-        except:
-            error=error+"error2"
+        for i in range(len(info)):
+            if info[i][0]==content:
+                info_index=i
+        if info_index < 0:
+            info=info+[content,0,0]   
         
         # save mem    
-        
         try:
+            '''
             with open('mem.csv','w') as f:
                 writer = csv.DictWriter(f, [row['user_id'],row['state'],row['time(min:sec)']])        
                 writer.writeheader()
                     for i in range(len(info)):
                          writer.writerow({'user_id':info[i][0], 'state':info[i][1],'time(min:sec)': info[i][2]})
+            '''             
         except:   
             error=error+"error3"
         
