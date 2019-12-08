@@ -79,8 +79,13 @@ def callback():
         try:
             with open('mem.csv') as f:
                 reader=csv.DictReader(f)
+                for row in reader:
+                if row==0:
+                    info=[[[row['user_id'],row['state']]]
+                else:
+                    info=info+[[[row['user_id'],row['state']]]
         except:
-              send_text_message(event.reply_token, "Not Entering any State")
+            line_bot_api.reply_message(event.reply_token, TextSendMessage(text="error"))
 
         '''
             for row in reader:
