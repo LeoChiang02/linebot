@@ -99,7 +99,7 @@ def callback():
         try:
             
             with open('mem.csv','w') as inf:
-                writer = csv.DictWriter(f, [row['user_id'],row['state'],row['time(min:sec)']]) 
+                writer = csv.DictWriter(inf, [row['user_id'],row['state'],row['time(min:sec)']]) 
                 writer.writeheader()
                 
             #for i in range(len(info)):
