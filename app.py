@@ -92,7 +92,8 @@ def callback():
             error="error1"
 
         # vertify user and recgonize stranger 
-        try:   
+        try:  
+            info_index=-1
             for i in range(len(info)):
                 if info[i][0]==content:
                     info_index=i
@@ -107,7 +108,7 @@ def callback():
                 writer = csv.DictWriter(inf, [row['user_id'],row['state'],row['time(min:sec)']])        
                 writer.writeheader()
                 for i in range(len(info)):
-                    writer.writerow({'user_id':info[i][0], 'state':info[i][1]},'time(min:sec)':'0' )
+                    writer.writerow({'user_id':info[i][0], 'state':info[i][1],'time(min:sec)': '0'})
         except:
             error="error3"
 
