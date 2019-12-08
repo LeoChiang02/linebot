@@ -83,15 +83,16 @@ def callback():
                 reader=csv.DictReader(f)
                 for row in reader:
                     if row==0:
-                        info=[[row["user_id"],row["state"],row["time(min:sec)"]]]
+                        info=[[row['user_id'],row['state'],row['time(min:sec)']]]
                     else:
-                        info=info+[[row["user_id"],row["state"],row["time(min:sec)"]]]
+                        info=info+[[row['user_id'],row['state'],row['time(min:sec)']]]
 
             error="ok"
         except:
             error="error1"
 
         # vertify user and recgonize stranger 
+        
         try:  
             info_index=-1
             for i in range(len(info)):
@@ -101,11 +102,11 @@ def callback():
                 info=info+[content,0,0]      
         except:
             error=error+"error2"
-    
+        '''
         # save mem    
         try:
             with open('mem.csv','w') as f:
-                writer = csv.DictWriter(f, [row["user_id"],row["state"],row["time(min:sec)"]])        
+                writer = csv.DictWriter(f, [row['user_id'],row['state'],row['time(min:sec)']])        
                 writer.writeheader()
                     for i in range(len(info)):
                         writer.writerow({'user_id':info[i][0], 'state':info[i][1],'time(min:sec)': info[i][2]})
@@ -116,7 +117,8 @@ def callback():
             else:
                 line_bot_api.reply_message(event.reply_token, TextSendMessage(text="wellcome back"+event.message.text+error))
         except:
-            error="error4"        
+            error="error4"     
+        '''   
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text=error))
         
     return "OK"
