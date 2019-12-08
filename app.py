@@ -94,12 +94,13 @@ def callback():
         # vertify user and recgonize stranger 
         
         try:  
-            info_index=-1
+        
             for i in range(len(info)):
                 if info[i][0]==content:
                     info_index=i
             if info_index < 0:
-                info=info+[content,0,0]      
+                info=info+[content,0,0]   
+            error=error+"ok"   
         except:
             error=error+"error2"
         '''
