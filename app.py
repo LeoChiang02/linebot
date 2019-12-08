@@ -88,8 +88,7 @@ def callback():
                 else:
                     info=info+[[row['user_id'],row['state'],row['time(min:sec)']]]
 
-        # vertify user and recgonize stranger 
-        try:  
+        # vertify user and recgonize stranger   
         for i in range(len(info)):
             if info[i][0]==content:
                 info_index=i
