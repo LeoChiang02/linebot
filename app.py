@@ -85,19 +85,10 @@ def callback():
                         info=[[row['user_id'],row['state']]]
                     else:
                         info=info+[[row['user_id'],row['state']]]
+
             error="ok"
         except:
             error="error1"
-        
-
-        try:
-            for row in reader:
-                if row==0:
-                    info=[[row['user_id'],row['state']]]
-                else:
-                    info=info+[[row['user_id'],row['state']]]
-        except:
-            error="error2"
 
         # vertify user and recgonize stranger user
         try:
@@ -107,7 +98,7 @@ def callback():
                 if info_index==[]:
                     info=info+[content,0]      
         except:
-            error="error3"
+            error="error2"
     
         # save mem    
         try:
@@ -117,7 +108,7 @@ def callback():
                 for i in range(len(info)): 
                     writer.writerow({'user_id':info[i][0], 'state':s[i][1]})
         except:
-            error="error4"
+            error="error3"
         
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text="new user"+event.message.text+error))
         
