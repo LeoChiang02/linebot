@@ -112,6 +112,7 @@ def callback():
                     for i in range(len(info)):
                         writer.writerow({'user_id':info[i][0], 'state':info[i][1],'time(min:sec)': info[i][2]})
             error=error+"error3"
+        '''
         try:
             if info_index < 0:
                 line_bot_api.reply_message(event.reply_token, TextSendMessage(text="hellow new user"+error))
@@ -119,7 +120,7 @@ def callback():
                 line_bot_api.reply_message(event.reply_token, TextSendMessage(text="wellcome back"+event.message.text+error))
         except:
             error="error4"     
-        '''   
+           
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text=error))
         
     return "OK"
