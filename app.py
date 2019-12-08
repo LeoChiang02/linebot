@@ -72,6 +72,7 @@ def callback():
             continue
         if not isinstance(event.message, TextMessage):
             continue
+        
         '''
         content=format(event.source.user_id)
         # read mem  
