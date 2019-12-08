@@ -100,20 +100,16 @@ def callback():
             if info_index < 0:
                 info=info+[content,0,0]      
         except:
-            error="error2"
+            error=error+"error2"
     
         # save mem    
         try:
             with open('mem.csv','w') as f:
                 writer = csv.DictWriter(f, [row["user_id"],row["state"],row["time(min:sec)"]])        
                 writer.writeheader()
-                try:
                     for i in range(len(info)):
                         writer.writerow({'user_id':info[i][0], 'state':info[i][1],'time(min:sec)': info[i][2]})
-                except:
-                    error="error3-1"
-
-            error="error3"
+            error=error+"error3"
         try:
             if info_index < 0:
                 line_bot_api.reply_message(event.reply_token, TextSendMessage(text="hellow new user"+error))
