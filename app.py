@@ -116,6 +116,8 @@ def callback():
         else:
             line_bot_api.reply_message(event.reply_token, TextSendMessage(text="wellcome back"+event.message.text+error))
         
+        line_bot_api.reply_message(event.reply_token, TextSendMessage(text=error))
+        
     return "OK"
 
 
