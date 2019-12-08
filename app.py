@@ -104,7 +104,7 @@ def callback():
                 
             #for i in range(len(info)):
             #writer.writerow({'user_id':info[i][0], 'state':info[i][1],'time(min:sec)': info[i][2]})
-                '''             
+                             
         except:   
             error=error+"error3"
         
