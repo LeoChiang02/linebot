@@ -77,7 +77,7 @@ def callback():
         # read mem  
         info=[]
         error=[]
-        '''
+        
         try:
             with open('mem.csv') as f:
                 reader=csv.DictReader(f)
@@ -88,6 +88,7 @@ def callback():
                         info=info+[[row['user_id'],row['state']]]
         except:
             error='error1'
+        '''
 
         
             for row in reader:
