@@ -77,18 +77,19 @@ def callback():
         # read mem  
         info=[]
         error=[]
+        '''
         try:
             with open('mem.csv') as f:
                 reader=csv.DictReader(f)
                 for row in reader:
                     if row==0:
-                        info=[[[row['user_id'],row['state']]]
+                        info=[[row['user_id'],row['state']]]
                     else:
-                        info=info+[[[row['user_id'],row['state']]]
+                        info=info+[[row['user_id'],row['state']]]
         except:
             error='error1'
 
-        '''
+        
             for row in reader:
                 if row==0:
                     info=[[[row['user_id'],row['state']]]
