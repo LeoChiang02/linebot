@@ -78,12 +78,12 @@ def callback():
         info=[]
         with open('mem.csv') as f:
             reader=csv.DictReader(f)
-            for row in reader:
+        '''    for row in reader:
                 if row==0:
-                    info=[[row['user_id'],row['state']]
+                    info=[[[row['user_id'],row['state']]]
                 else:
-                    info=info+[[row['user_id'],row['state']]
-
+                    info=info+[[[row['user_id'],row['state']]]
+        '''
     
     # vertify user and recgonize stranger user
     '''    for i in range(len(info))
