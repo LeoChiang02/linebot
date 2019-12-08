@@ -76,8 +76,7 @@ def callback():
         content=format(event.source.user_id)
         # read mem  
         info=[]
-    
-        
+        error=[]
         try:
             with open('mem.csv') as f:
                 reader=csv.DictReader(f)
