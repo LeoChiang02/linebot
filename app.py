@@ -99,13 +99,12 @@ def callback():
         try:
             
             with open('mem.csv','w') as inf:
-
-            '''
-                writer = csv.DictWriter(f, [row['user_id'],row['state'],row['time(min:sec)']])        
+                writer = csv.DictWriter(f, [row['user_id'],row['state'],row['time(min:sec)']]) 
                 writer.writeheader()
-                    for i in range(len(info)):
-                         writer.writerow({'user_id':info[i][0], 'state':info[i][1],'time(min:sec)': info[i][2]})
-            '''             
+                
+            #for i in range(len(info)):
+            #writer.writerow({'user_id':info[i][0], 'state':info[i][1],'time(min:sec)': info[i][2]})
+                '''             
         except:   
             error=error+"error3"
         
