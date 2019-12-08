@@ -77,6 +77,7 @@ def callback():
         # read mem  
         info=[]
         error="none"
+        info_index=-1
         try:
             with open('mem.csv') as f:
                 reader=csv.DictReader(f)
@@ -91,8 +92,7 @@ def callback():
             error="error1"
 
         # vertify user and recgonize stranger 
-        try:
-            info_index=-1
+        try:   
             for i in range(len(info)):
                 if info[i][0]==content:
                     info_index=i
