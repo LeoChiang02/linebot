@@ -76,16 +76,17 @@ def callback():
         content=format(event.source.user_id)
         # read mem  
         info=[]
+        error=[]
         try:
             with open('mem.csv') as f:
                 reader=csv.DictReader(f)
                 for row in reader:
-                if row==0:
-                    info=[[[row['user_id'],row['state']]]
-                else:
-                    info=info+[[[row['user_id'],row['state']]]
+                    if row==0:
+                        info=[[[row['user_id'],row['state']]]
+                    else:
+                        info=info+[[[row['user_id'],row['state']]]
         except:
-            line_bot_api.reply_message(event.reply_token, TextSendMessage(text="error"))
+            error='error1'
 
         '''
             for row in reader:
@@ -96,7 +97,7 @@ def callback():
         
     
         # vertify user and recgonize stranger user
-        for i in range(len(info))
+        for i in range(len(info))+
             if info[i][0]!=content:
                 info_index=i
             if info_index==[]:
@@ -109,7 +110,7 @@ def callback():
             for i in range(len(info)): 
                 writer.writerow({'user_id':info[i][0], 'state':s[i][1]})
         '''
-        line_bot_api.reply_message(event.reply_token, TextSendMessage(text="new user"+event.message.text+content))
+        line_bot_api.reply_message(event.reply_token, TextSendMessage(text="new user"+event.message.text+content+error))
 
     return "OK"
 
