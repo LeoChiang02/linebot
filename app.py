@@ -86,7 +86,7 @@ def callback():
 
     
     # vertify user and recgonize stranger user
-        for i in range(len(info))
+    '''    for i in range(len(info))
             if info[i][0]!=content:
                 info_index=i
         if info_index==[]:
@@ -98,8 +98,8 @@ def callback():
             writer.writeheader()
             for i in range(len(info)): 
                 writer.writerow({'user_id':info[i][0], 'state':s[i][1]})
-
-        if info_index !=[]:
+    '''
+        if event.message.text =='a':
             line_bot_api.reply_message(event.reply_token, TextSendMessage(text="hello"))
 
         else:
