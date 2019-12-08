@@ -75,7 +75,7 @@ def callback():
         
         content=format(event.source.user_id)
         # read mem  
-        '''info=[]
+        info=[]
         with open('mem.csv') as f:
             reader=csv.DictReader(f)
             for row in reader:
@@ -83,7 +83,7 @@ def callback():
                     info=[[[row['user_id'],row['state']]]
                 else:
                     info=info+[[[row['user_id'],row['state']]]
-        
+        '''
     
         # vertify user and recgonize stranger user
         for i in range(len(info))
