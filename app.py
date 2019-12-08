@@ -75,10 +75,10 @@ def callback():
         
         content=format(event.source.user_id)
     # read mem  
-        info=[]
+     '''   info=[]
         with open('mem.csv') as f:
             reader=csv.DictReader(f)
-        '''    for row in reader:
+            for row in reader:
                 if row==0:
                     info=[[[row['user_id'],row['state']]]
                 else:
