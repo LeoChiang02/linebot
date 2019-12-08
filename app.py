@@ -80,7 +80,7 @@ def callback():
         error="none"
         info_index=-1
         
-        with open('mem.csv') as f:
+        with open('mem.csv','r') as f:
             reader=csv.DictReader(f)
             for row in reader:
                 if row==0:
