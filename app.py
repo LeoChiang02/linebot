@@ -103,14 +103,14 @@ def callback():
     
         # save mem    
         try:
-            with open('mem.csv','w',newline='') as inf:
+            with open('mem.csv','w') as inf:
                 writer = csv.DictWriter(inf, ['user_id', 'state'])        
                 writer.writeheader()
-                for i in range(len(info)): 
-                    writer.writerow({'user_id':info[i][0], 'state':s[i][1]})
+                for i in range(len(info)):
+                        writer.writerow({'user_id':info[i][0], 'state':info[i][1]})
         except:
             error="error3"
-            
+
         if info_index < 0:
             line_bot_api.reply_message(event.reply_token, TextSendMessage(text="hellow new user"+error))
         else:
