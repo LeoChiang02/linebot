@@ -76,14 +76,19 @@ def callback():
         content=format(event.source.user_id)
         # read mem  
         info=[]
-        with open('mem.csv') as f:
-            reader=csv.DictReader(f)
+        try:
+            with open('mem.csv') as f:
+                reader=csv.DictReader(f)
+        except:
+              send_text_message(event.reply_token, "Not Entering any State")
+
+        '''
             for row in reader:
                 if row==0:
                     info=[[[row['user_id'],row['state']]]
                 else:
                     info=info+[[[row['user_id'],row['state']]]
-        '''
+        
     
         # vertify user and recgonize stranger user
         for i in range(len(info))
