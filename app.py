@@ -98,7 +98,7 @@ def callback():
         # save mem    
         try:
             
-            with open('mem.csv','w', newline= ,encoding=utf-8) as inf: #check for encoding & 
+            with open('mem.csv','w', newline= ) as inf: #check for encoding & 
                 writer = csv.DictWriter(inf, [row['user_id'],row['state'],row['time(min:sec)']]) 
                 writer.writeheader()
                 writer.writerow({'user_id':0, 'state':1,'time(min:sec)': 2})
