@@ -90,7 +90,7 @@ def callback():
         except:
             message="error"
 
-        if event.message.text=="a"
+        if event.message.text=="a":
             line_bot_api.reply_message(event.reply_token , TextSendMessage(text=event.message.text+message))
         else:
             line_bot_api.reply_message(event.reply_token , TextSendMessage(text="so sad"+message))
