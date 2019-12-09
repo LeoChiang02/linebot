@@ -72,10 +72,10 @@ def callback():
             continue
         if not isinstance(event.message, TextMessage):
             continue
-
+        
+        message=TextSendMessage(text=event.message.text)        
         try:
-            x=TextSendMessage(text=event.message.text)
-            [mode,start,target,ml]=x.split('/')
+            [mode,start,target,ml]=message.split('/')
             if str(mode) == 'a' or str(mode) == '稀釋':
                 try:
                     start=eval(start)
@@ -85,12 +85,11 @@ def callback():
                     message="input conc. is invalid"
                     ans=target*ml/start
                     others=ml-ans
-                    message='母液溶液'+start+" M "+ml+'mL'+'將'+ans+'mL母液加入'+others+'mL水'
+                    message='母液溶液'+start+' M '+ml+'mL'+'將'+ans+'mL母液加入'+others+'mL水'
         except:
-            x=[]
+            message="error"
 
-
-        line_bot_api.reply_message(event.reply_token , TextSendMessage(text=event.message.text))
+        line_bot_api.reply_message(event.reply_token , message)
  
            
 
