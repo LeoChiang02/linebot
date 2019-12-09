@@ -79,22 +79,25 @@ def callback():
         info=[]
         error="none"
         info_index=-1
-        
-        with open('mem.csv','r') as f:
-            reader=csv.DictReader(f)
-            for row in reader:
-                if row==0:
-                    info=[[row['user_id'],row['state'],row['time(min:sec)']]]
-                else:
-                    info=info+[[row['user_id'],row['state'],row['time(min:sec)']]]
-
+        try:
+            with open('mem.csv','r') as f:
+                reader=csv.DictReader(f)
+                for row in reader:
+                    if row==0:
+                        info=[[row['user_id'],row['state'],row['time(min:sec)']]]
+                    else:
+                        info=info+[[row['user_id'],row['state'],row['time(min:sec)']]]
+        except:
+            error="error1"
         # vertify user and recgonize stranger   
-        for i in range(len(info)):
-            if info[i][0]==content:
-                info_index=i
-        if info_index < 0:
-            info=info+[content,0,0]   
-        
+        try:
+            for i in range(len(info)):
+                if info[i][0]==content:
+                    info_index=i
+            if info_index < 0:
+                info=info+[content,0,0]   
+        except:
+            error=error+" "+"error2"
         # save mem    
         try:
             #check for encoding & 
