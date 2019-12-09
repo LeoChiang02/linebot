@@ -110,7 +110,7 @@ def callback():
                     line_bot_api.reply_message(event.reply_token, TextSendMessage(text="input conc. is invalid"))
                 ans=target*ml/start
                 others=ml-ans
-                line_bot_api.reply_message(event.reply_token, TextSendMessage(text='母液溶液', start,'M',ml,'mL','將',ans,'mL母液加入',others,'mL水'))
+                line_bot_api.reply_message(event.reply_token, TextSendMessage(text='母液溶液', start," M ",ml,'mL','將',ans,'mL母液加入',others,'mL水'))
         except:
              line_bot_api.reply_message(event.reply_token, TextSendMessage(text="error"+"so sad"))
 
