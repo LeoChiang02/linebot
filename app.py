@@ -80,13 +80,14 @@ def callback():
         error="none"
         info_index=-1
         
-        with open('mem.csv','r') as f:
-            reader=csv.DictReader(f)
-            for row in reader:
-                if row==0:
-                    info=[[row['user_id'],row['state'],row['time(min:sec)']]]
-                else:
-                    info=info+[[row['user_id'],row['state'],row['time(min:sec)']]]
+        f= open('mem.csv','r') 
+        reader=csv.DictReader(f)
+        for row in reader:
+            if row==0:
+                info=[[row['user_id'],row['state'],row['time(min:sec)']]]
+            else:
+                info=info+[[row['user_id'],row['state'],row['time(min:sec)']]]
+        f.close()
 
         # vertify user and recgonize stranger   
         for i in range(len(info)):
@@ -110,9 +111,9 @@ def callback():
             error=error+" "+"error3"
         
         if info_index < 0:
-            line_bot_api.reply_message(event.reply_token, TextSendMessage(text="hellow new user"+" "+error))
+            line_bot_api.reply_message(event.reply_token, TextSendMessage(text="hellow new user"+" "+ error+" " +content))
         else:
-            line_bot_api.reply_message(event.reply_token, TextSendMessage(text="wellcome back"+event.message.text+" "+error))
+            line_bot_api.reply_message(event.reply_token, TextSendMessage(text="wellcome back"+event.message.text+" "+error+" "+content))
             
            
         #line_bot_api.reply_message(event.reply_token, TextSendMessage(text="error"+"so sad"))
