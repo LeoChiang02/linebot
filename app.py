@@ -96,7 +96,8 @@ def callback():
         if info_index < 0:
             info=info+[content,0,0]   
         
-        # save mem    
+        # save mem  
+        '''  
         try:
             
             inf = open('mem.csv','w', encoding='utf-8') #check for encoding &
@@ -109,7 +110,7 @@ def callback():
                         
         except:   
             error=error+" "+"error3"
-        
+        '''
         if info_index < 0:
             line_bot_api.reply_message(event.reply_token, TextSendMessage(text="hellow new user"+" "+ error+" " +str(info_index)))
         else:
