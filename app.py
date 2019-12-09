@@ -100,7 +100,7 @@ def callback():
         # save mem  
         '''
         try:
-            x=event.message.text
+            x=TextSendMessage(text=event.message.text)
             [mode,start,target,ml]=x.split('/')
             if str(mode) == 'a' or str(mode) == '稀釋':
                 try:
