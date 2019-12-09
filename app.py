@@ -97,8 +97,8 @@ def callback():
         
         # save mem    
         try:
-            
-            with open('mem.csv','w', newline= ) as inf: #check for encoding & 
+            #check for encoding & 
+            with open('mem.csv','w', newline=) as inf: 
                 writer = csv.DictWriter(inf, [row['user_id'],row['state'],row['time(min:sec)']]) 
                 writer.writeheader()
                 writer.writerow({'user_id':0, 'state':1,'time(min:sec)': 2})
@@ -107,12 +107,12 @@ def callback():
             #writer.writerow({'user_id':info[i][0], 'state':info[i][1],'time(min:sec)': info[i][2]})
             inf.close()            
         except:   
-            error=error+"__"+"error3"
+            error=error+" "+"error3"
         
         if info_index < 0:
-            line_bot_api.reply_message(event.reply_token, TextSendMessage(text="hellow new user"+"//"+error))
+            line_bot_api.reply_message(event.reply_token, TextSendMessage(text="hellow new user"+" "+error))
         else:
-            line_bot_api.reply_message(event.reply_token, TextSendMessage(text="wellcome back"+event.message.text+"//"+error))
+            line_bot_api.reply_message(event.reply_token, TextSendMessage(text="wellcome back"+event.message.text+" "+error))
             
            
         #line_bot_api.reply_message(event.reply_token, TextSendMessage(text="error"+"so sad"))
