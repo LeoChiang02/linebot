@@ -111,9 +111,9 @@ def callback():
             error=error+" "+"error3"
         
         if info_index < 0:
-            line_bot_api.reply_message(event.reply_token, TextSendMessage(text="hellow new user"+" "+ error+" " +content))
+            line_bot_api.reply_message(event.reply_token, TextSendMessage(text="hellow new user"+" "+ error+" " +str(info_index))
         else:
-            line_bot_api.reply_message(event.reply_token, TextSendMessage(text="wellcome back"+event.message.text+" "+error+" "+content))
+            line_bot_api.reply_message(event.reply_token, TextSendMessage(text="wellcome back"+event.message.text+" "+error+" "+str(info_index))
             
            
         #line_bot_api.reply_message(event.reply_token, TextSendMessage(text="error"+"so sad"))
