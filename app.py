@@ -115,6 +115,7 @@ def callback():
             inf=open('test.csv','w',)
             writer =csv.DictWriter(inf,[row['user_id'],row['state'],row['time(min:sec)']])
             writer.writeheader()
+            writer.writerow({'user_id':0, 'state':1,'time(min:sec)':2})
             inf.close()
         except:   
             error=error+" "+"error3"
