@@ -84,11 +84,12 @@ def callback():
                     start=eval(start)
                     ml=eval(ml)
                     target=eval(target)
-                except:
-                    message="input conc. is invalid"
                     ans=target*ml/start
                     others=ml-ans
                     message='母液溶液'+start+' M '+ml+'mL'+'將'+ans+'mL母液加入'+others+'mL水'
+                except:
+                    message="input conc. is invalid"
+                    
             
         except:
             message="error"
