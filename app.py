@@ -112,7 +112,7 @@ def callback():
             error=error+" "+"error3"
         '''
         try:
-            inf=open('test.csv','w',)
+            inf=open('mem.csv','w',)
             writer =csv.Writer(inf)
             writer.writerow('user_id','state','time(min:sec)')
             inf.close()
