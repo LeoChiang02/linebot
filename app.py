@@ -111,6 +111,12 @@ def callback():
         except:   
             error=error+" "+"error3"
         '''
+        try:
+            inf=open('test.csv','w',)
+            inf.close()
+        except:   
+            error=error+" "+"error3"
+
         if info_index < 0:
             line_bot_api.reply_message(event.reply_token, TextSendMessage(text="hellow new user"+" "+ error+" " +str(info_index)))
         else:
