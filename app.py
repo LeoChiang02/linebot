@@ -99,14 +99,14 @@ def callback():
         # save mem    
         try:
             
-            with open('mem.csv','w', encoding='utf-8') as inf: #check for encoding &
-                writer = csv.DictWriter(inf, [row['user_id'],row['state'],row['time(min:sec)']]) 
-                writer.writeheader()
-                writer.writerow({'user_id':0, 'state':1,'time(min:sec)': 2})
-                
+            inf = open('mem.csv','w', encoding='utf-8') #check for encoding &
+            writer = csv.DictWriter(inf, [row['user_id'],row['state'],row['time(min:sec)']]) 
+            writer.writeheader()
+            writer.writerow({'user_id':0, 'state':1,'time(min:sec)': 2})
+            inf.close() 
             #for i in range(len(info)):
             #writer.writerow({'user_id':info[i][0], 'state':info[i][1],'time(min:sec)': info[i][2]})
-            inf.close()            
+                        
         except:   
             error=error+" "+"error3"
         
