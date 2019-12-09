@@ -75,6 +75,7 @@ def callback():
 
         
         content=format(event.source.user_id)
+        '''
         # read mem  
         info=[]
         error="none"
@@ -97,36 +98,35 @@ def callback():
             info=info+[content,0,0]   
         
         # save mem  
-        '''  
-        try:
-            
-            inf = open('mem.csv','w', encoding='utf-8') #check for encoding &
-            writer = csv.DictWriter(inf, [row['user_id'],row['state'],row['time(min:sec)']]) 
-            writer.writeheader()
-            writer.writerow({'user_id':0, 'state':1,'time(min:sec)': 2})
-            inf.close() 
-            #for i in range(len(info)):
-            #writer.writerow({'user_id':info[i][0], 'state':info[i][1],'time(min:sec)': info[i][2]})
-                        
-        except:   
-            error=error+" "+"error3"
         '''
         try:
-            inf=open('mem.csv','w')
-            writer=csv.writer(inf)
-            writer.writerow(['user_id','state','time(min:sec)'])
-            writer.writerow([Ud6829cd2a96029a1c4c607a0d17715dc,0,0])
-            inf.close()
-        except:   
-            error=error+" "+"error3"
+            [mode,start,target,ml]=event.message.text.split('/')
+            if str(mode) == 'a' or str(mode) == '稀釋':
+                try:
+                    start=eval(start)
+                    ml=eval(ml)
+                    target=eval(target)
+                except:
+                    line_bot_api.reply_message(event.reply_token, TextSendMessage(text="input conc. is invalid"))
+                ans=target*ml/start
+                others=ml-ans
+                line_bot_api.reply_message(event.reply_token, TextSendMessage(text='母液溶液', start,'M',ml,'mL','將',ans,'mL母液加入',others,'mL水'))
+         except:
+             line_bot_api.reply_message(event.reply_token, TextSendMessage(text="error"+"so sad"))
 
+
+
+
+  
+
+        '''
         if info_index < 0:
             line_bot_api.reply_message(event.reply_token, TextSendMessage(text="hellow new user"+" "+ error+" " +str(info_index)))
         else:
             line_bot_api.reply_message(event.reply_token, TextSendMessage(text="wellcome back"+event.message.text+" "+error+" "+str(info_index)))
-            
+        '''    
            
-        #line_bot_api.reply_message(event.reply_token, TextSendMessage(text="error"+"so sad"))
+        line_bot_api.reply_message(event.reply_token, TextSendMessage(text="error"+"so sad"))
         
     return "OK"
 
