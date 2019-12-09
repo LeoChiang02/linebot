@@ -75,6 +75,7 @@ def callback():
         
             
         try:
+            message = event.message.text
             [mode,start,target,ml]=message.split('/')
             if str(mode) == 'a' or str(mode) == '稀釋':
                 try:
@@ -89,7 +90,10 @@ def callback():
         except:
             message="error"
 
-        line_bot_api.reply_message(event.reply_token , TextSendMessage(text=event.message.text+message))
+        if event.message.text=="a"
+            line_bot_api.reply_message(event.reply_token , TextSendMessage(text=event.message.text+message))
+        else:
+            line_bot_api.reply_message(event.reply_token , TextSendMessage(text="so sad"+message))
  
            
 
