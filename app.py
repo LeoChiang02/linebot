@@ -100,7 +100,8 @@ def callback():
         # save mem  
         '''
         try:
-            [mode,start,target,ml]=event.message.text.split('/')
+            x=event.message.text
+            [mode,start,target,ml]=x.split('/')
             if str(mode) == 'a' or str(mode) == '稀釋':
                 try:
                     start=eval(start)
@@ -112,7 +113,7 @@ def callback():
                 others=ml-ans
                 line_bot_api.reply_message(event.reply_token, TextSendMessage(text='母液溶液', start," M ",ml,'mL','將',ans,'mL母液加入',others,'mL水'))
         except:
-             line_bot_api.reply_message(event.reply_token, TextSendMessage(text="error"+"so sad"))
+            line_bot_api.reply_message(event.reply_token, TextSendMessage(text="error"+"so sad"))
 
 
 
