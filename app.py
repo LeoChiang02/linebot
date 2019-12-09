@@ -76,7 +76,7 @@ def callback():
             
         try:
             message = str(event.message.text)
-            #[mode,start,target,ml]=message.split('/')
+            [mode,start,target,ml]=message.split('/')
             message="ok"
             '''
             if str(mode) == 'a' or str(mode) == '稀釋':
