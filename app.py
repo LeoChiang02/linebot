@@ -113,6 +113,8 @@ def callback():
         '''
         try:
             inf=open('test.csv','w',)
+            writer =csv.DictWriter(inf,[row['user_id'],row['state'],row['time(min:sec)']])
+            writer.writeheader()
             inf.close()
         except:   
             error=error+" "+"error3"
