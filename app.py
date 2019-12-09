@@ -76,7 +76,9 @@ def callback():
             
         try:
             message = str(event.message.text)
-            [mode,start,target,ml]=message.split('/')
+            #[mode,start,target,ml]=message.split('/')
+            message="ok"
+            '''
             if str(mode) == 'a' or str(mode) == '稀釋':
                 try:
                     start=eval(start)
@@ -87,6 +89,7 @@ def callback():
                     ans=target*ml/start
                     others=ml-ans
                     message='母液溶液'+start+' M '+ml+'mL'+'將'+ans+'mL母液加入'+others+'mL水'
+            '''
         except:
             message="error"
 
