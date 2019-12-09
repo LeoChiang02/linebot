@@ -87,9 +87,10 @@ def callback():
                     others=ml-ans
                     message='母液溶液'+start+" M "+ml+'mL'+'將'+ans+'mL母液加入'+others+'mL水'
         except:
+            x=[]
 
-        
-        line_bot_api.reply_message(event.reply_token , message)
+
+        line_bot_api.reply_message(event.reply_token , TextSendMessage(text=event.message.text))
  
            
 
