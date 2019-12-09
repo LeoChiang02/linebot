@@ -83,7 +83,7 @@ def callback():
             target=eval(target)
             
             if mode == 'a' or mode == "稀釋":
-                if target > start :
+                if target < start :
                     ans=target*ml/start
                     others=ml-ans
                     message='母液濃度:'+str(start)+'M/目標濃度:'+str(target)+'所需劑量'+str(ml)+'mL'+'  配法:將'+str(ans)+'mL母液加入'+str(others)+'mL水'
