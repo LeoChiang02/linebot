@@ -115,7 +115,7 @@ def callback():
             inf=open('mem.csv','w',)
             writer=csv.writer(inf)
             writer.writerow(['user_id','state','time(min:sec)'])
-            writer.writerow([0,2,2])
+            writer.writerow([Ud6829cd2a96029a1c4c607a0d17715dc,0,0])
             inf.close()
         except:   
             error=error+" "+"error3"
