@@ -86,18 +86,20 @@ def callback():
                     target=eval(target)
                     ans=target*ml/start
                     others=ml-ans
-                    message='母液溶液'+str(start)+' M '+str(ml)+'mL'+'將'+str(ans)+'mL母液加入'+str(others)+'mL水'
+                    message='母液濃度:'+str(start)+'M/目標濃度:'+str(target)+'所需劑量'+str(ml)+'mL'+'配法:  將'+str(ans)+'mL母液加入'+str(others)+'mL水'
                 except:
-                    message="input conc. is invalid"
+                    message="input conc. invalid"
                     
             
         except:
-            message="error"
+            message="input invalid"
 
-        if event.message.text=="a":
-            line_bot_api.reply_message(event.reply_token , TextSendMessage(text=event.message.text+message))
+        if message!="input invalid":
+            line_bot_api.reply_message(event.reply_token , TextSendMessage(text=message))
         else:
-            line_bot_api.reply_message(event.reply_token , TextSendMessage(text="so sad"+message))
+            line_bot_api.reply_message(event.reply_token , TextSendMessage(text='請輸入:稀釋 or a /母液濃度(M)/目標濃度(M)/所需劑量(mL)'))
+  
+        
  
            
 
