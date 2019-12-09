@@ -73,7 +73,7 @@ def callback():
         if not isinstance(event.message, TextMessage):
             continue
         
-        message=TextSendMessage(text=event.message.text)        
+            
         try:
             [mode,start,target,ml]=message.split('/')
             if str(mode) == 'a' or str(mode) == '稀釋':
@@ -89,7 +89,7 @@ def callback():
         except:
             message="error"
 
-        line_bot_api.reply_message(event.reply_token , message)
+        line_bot_api.reply_message(event.reply_token , TextSendMessage(text=event.message.text+message))
  
            
 
