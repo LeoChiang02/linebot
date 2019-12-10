@@ -86,8 +86,8 @@ def callback():
                 if target < start :
                     ans=target*ml/start
                     others=ml-ans
-                    message='母液濃度:'+str(start)+'M/目標濃度:'+str(target)+'M/所需劑量'+str(ml)+' mL'
-                    sol=' 配法:將'+str(ans)+' mL母液加入'+str(others)+' mL溶劑'
+                    message='母液濃度:'+str(start)+'M /目標濃度:'+str(target)+'M /所需劑量: '+str(ml)+' mL'
+                    sol=' 配法: 將'+str(ans)+' mL母液加入'+str(others)+' mL溶劑'
                 else:
                     message="input conc. invalid"
 
@@ -104,7 +104,13 @@ def callback():
             message="input invalid"
 
         if message=="input invalid":
-            line_bot_api.reply_message(event.reply_token , TextSendMessage(text='請輸入:稀釋 or a /母液濃度(M)/目標濃度(M)/所需劑量(mL)'))   
+            line_bot_api.reply_message(event.reply_token , TextSendMessage(text="歡迎使用溶劑配置計算機"+
+                                                                            "\n"+'請選擇模式與所需:'+
+                                                                            "\n"+'稀釋(a) 配置(b)'+
+                                                                            "\n"+'輸入範例:'+
+                                                                            "\n"+'稀釋/母液濃度(M)/目標濃度(M)/所需劑量(mL)'
+                                                                            "\n"+'a/20/5/20'
+                                                                            ))   
         elif message=="input conc. invalid":
             line_bot_api.reply_message(event.reply_token , TextSendMessage(text=message))
         else:
