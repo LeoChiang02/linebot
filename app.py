@@ -95,7 +95,7 @@ def callback():
                 elif mode == 'b' or mode == "配置":
                     if  start>0 :
                         ans=round(target*start*ml/1000,2)
-                        message='溶質分子量:'+str(start)+'M /目標濃度:'+str(target)+'M /所需劑量: '+str(ml)+' mL'
+                        message='溶質分子量:'+str(start)+'g/mol /目標濃度:'+str(target)+'M /所需劑量: '+str(ml)+' mL'
                         sol='配法: 將'+str(ans)+' g溶質加入'+str(ml)+' mL溶劑'
                     else:
                         message="input molarity invalid"
