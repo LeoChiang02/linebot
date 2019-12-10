@@ -114,16 +114,11 @@ def callback():
                                                                             "\n"+'輸入範例:'+
                                                                             "\n"+'ex: a/20/5/20 [稀釋:20 M->5 M 需要20 mL]'
                                                                             ))   
-        elif message=="input conc. invalid":
+        elif message=="input conc. invalid" or message=="condition invalid":
             line_bot_api.reply_message(event.reply_token , TextSendMessage(text=message))
         else:
             line_bot_api.reply_message(event.reply_token , TextSendMessage(text=message+"\n"+sol))
     
-  
-        
- 
-           
-
         
     return "OK"
 
