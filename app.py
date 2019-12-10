@@ -92,13 +92,15 @@ def callback():
                     else:
                         message="input conc. invalid"
 
-                if mode == 'b' or mode == "配置":
+                elif mode == 'b' or mode == "配置":
                     if  start>0 :
                         ans=round(target*start*ml/1000,2)
                         message='溶質分子量:'+str(start)+'M /目標濃度:'+str(target)+'M /所需劑量: '+str(ml)+' mL'
                         sol='配法: 將'+str(ans)+' g溶質加入'+str(ml)+' mL溶劑'
                     else:
                         message="input molarity invalid"
+                else:
+                    message="unknow mode"
             else:
                 message="condition invalid"
             
@@ -113,7 +115,7 @@ def callback():
                                                                             "\n"+'輸入範例:'+
                                                                             "\n"+'ex: a/20/5/20 [稀釋:20 M->5 M 需要20 mL]'
                                                                             ))   
-        elif message=="input conc. invalid" or message=="condition invalid":
+        elif message=="input conc. invalid" or message=="condition invalid" or message=="unknow mode":
             line_bot_api.reply_message(event.reply_token , TextSendMessage(text=message))
         else:
             line_bot_api.reply_message(event.reply_token , TextSendMessage(text=message+"\n"+sol))
