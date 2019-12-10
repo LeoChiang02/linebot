@@ -86,7 +86,8 @@ def callback():
                 if target < start :
                     ans=target*ml/start
                     others=ml-ans
-                    message='母液濃度:'+str(start)+'M/目標濃度:'+str(target)+'M/所需劑量'+str(ml)+' mL'+'%0D%0A'+'  配法:將'+str(ans)+' mL母液加入'+str(others)+' mL水'
+                    message='母液濃度:'+str(start)+'M/目標濃度:'+str(target)+'M/所需劑量'+str(ml)+' mL'
+                    sol=' 配法:將'+str(ans)+' mL母液加入'+str(others)+' mL溶劑'
                 else:
                     message="input conc. invalid"
 
@@ -107,7 +108,7 @@ def callback():
         elif message=="input conc. invalid":
             line_bot_api.reply_message(event.reply_token , TextSendMessage(text=message))
         else:
-            line_bot_api.reply_message(event.reply_token , TextSendMessage(text=message))
+            line_bot_api.reply_message(event.reply_token , TextSendMessage(text=message+"\n"+sol))
     
   
         
