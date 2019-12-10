@@ -83,33 +83,34 @@ def callback():
             target=eval(target)
             
             if mode == 'a' or mode == "稀釋":
-                if target < start :
+                if target < start or ml<0:
                     ans=target*ml/start
                     others=ml-ans
                     message='母液濃度:'+str(start)+'M /目標濃度:'+str(target)+'M /所需劑量: '+str(ml)+' mL'
-                    sol=' 配法: 將'+str(ans)+' mL母液加入'+str(others)+' mL溶劑'
+                    sol='配法: 將'+str(ans)+' mL母液加入'+str(others)+' mL溶劑'
                 else:
-                    message="input conc. invalid"
+                    message="input conc. or condition invalid"
 
             if mode == 'b' or mode == "配置":
-                if target < start :
+                if 
                     ans=target*ml/start
                     others=ml-ans
-                    message='母液濃度:'+str(start)+'M/目標濃度:'+str(target)+'所需劑量'+str(ml)+' mL'+'  配法:將'+str(ans)+' mL母液加入'+str(others)+' mL水'
+                    message='溶質分子量:'+str(start)+'M /目標濃度:'+str(target)+'M /所需劑量: '+str(ml)+' mL'
+                    sol='配法: 將'+str(ans)+' mL母液加入'+str(others)+' mL溶劑'
                 else:
-                    message="input conc. invalid"
+                    message="input molarity or condition invalid"
                     
             
         except:
             message="input invalid"
 
         if message=="input invalid":
-            line_bot_api.reply_message(event.reply_token , TextSendMessage(text="歡迎使用溶劑配置計算機"+
-                                                                            "\n"+'請選擇模式與所需:'+
-                                                                            "\n"+'稀釋(a) 配置(b)'+
+            line_bot_api.reply_message(event.reply_token , TextSendMessage(text="<歡迎使用溶液配置計算機>"+
+                                                                            "\n"+'模式: 稀釋(a) 配置(b)'+                                                                                         
+                                                                            "\n"+'  稀釋/ 母液濃度(M) / 目標濃度(M) / 所需劑量(mL)'
+                                                                            "\n"+'  配置/ 溶質分子量(g/mol) /目標濃度(M) / 所需劑量(mL)'
                                                                             "\n"+'輸入範例:'+
-                                                                            "\n"+'稀釋/母液濃度(M)/目標濃度(M)/所需劑量(mL)'
-                                                                            "\n"+'a/20/5/20'
+                                                                            "\n"+'ex: a/20/5/20 [稀釋:20 M->5 M 需要20 mL]'
                                                                             ))   
         elif message=="input conc. invalid":
             line_bot_api.reply_message(event.reply_token , TextSendMessage(text=message))
