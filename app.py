@@ -6,7 +6,7 @@ from flask import Flask, jsonify, request, abort, send_file
 from dotenv import load_dotenv
 from linebot import LineBotApi, WebhookParser
 from linebot.exceptions import InvalidSignatureError
-from linebot.models import MessageEvent, TextMessage, TextSendMessage
+from linebot.models import MessageEvent, TextMessage, TextSendMessage ,ImageSendMessage
 
 from fsm import TocMachine
 from utils import send_text_message
@@ -72,53 +72,54 @@ def callback():
             continue
         if not isinstance(event.message, TextMessage):
             continue
-        
-            
-        try:
-            message = str(event.message.text)
-            [mode,start,target,ml]=message.split('/')
-            message="ok"
-            start=eval(start)
-            ml=eval(ml)
-            target=eval(target)
-            
-            if target>0 and ml>0 and start>0:
-                if mode == 'a' or mode == "稀釋":
-                    if target < start or ml<0:
-                        ans=round(target*ml/start,1)
-                        others=round(ml-ans,1)
-                        message='母液濃度:'+str(start)+'M /目標濃度:'+str(target)+'M /所需劑量: '+str(ml)+' mL'
-                        sol='配法: 將'+str(ans)+' mL母液加入'+str(others)+' mL溶劑'
-                    else:
-                        message="input conc. invalid"
 
-                elif mode == 'b' or mode == "配置":
-                    if  start>0 :
-                        ans=round(target*start*ml/1000,2)
-                        message='溶質分子量:'+str(start)+'g/mol /目標濃度:'+str(target)+'M /所需劑量: '+str(ml)+' mL'
-                        sol='配法: 將'+str(ans)+' g溶質加入'+str(ml)+' mL溶劑'
+        if str(event.message.text) =="fsm":
+            line_bot_api.reply_message(event.reply_token,ImageSendMessage(original_content_url='https://raw.githubusercontent.com/LeoChiang02/linebot/master/fsm.png', preview_image_url='https://raw.githubusercontent.com/LeoChiang02/linebot/master/fsm.png'))
+        else:    
+            try:
+                message = str(event.message.text)
+                [mode,start,target,ml]=message.split('/')
+                start=eval(start)
+                ml=eval(ml)
+                target=eval(target)
+                
+                if target>0 and ml>0 and start>0:
+                    if mode == 'a' or mode == "稀釋":
+                        if target < start or ml<0:
+                            ans=round(target*ml/start,1)
+                            others=round(ml-ans,1)
+                            message='母液濃度:'+str(start)+'M /目標濃度:'+str(target)+'M /所需劑量: '+str(ml)+' mL'
+                            sol='配法: 將'+str(ans)+' mL母液加入'+str(others)+' mL溶劑'
+                        else:
+                            message="input conc. invalid"
+
+                    elif mode == 'b' or mode == "配置":
+                        if  start>0 :
+                            ans=round(target*start*ml/1000,2)
+                            message='溶質分子量:'+str(start)+'g/mol /目標濃度:'+str(target)+'M /所需劑量: '+str(ml)+' mL'
+                            sol='配法: 將'+str(ans)+' g溶質加入'+str(ml)+' mL溶劑'
+                        else:
+                            message="input molarity invalid"
                     else:
-                        message="input molarity invalid"
+                        message="unknow mode"
                 else:
-                    message="unknow mode"
-            else:
-                message="condition invalid"
-            
-        except:
-            message="input invalid"
+                    message="condition invalid"
+                
+            except:
+                message="input invalid"
 
-        if message=="input invalid":
-            line_bot_api.reply_message(event.reply_token , TextSendMessage(text="<歡迎使用溶液配置計算機>"+
-                                                                            "\n"+'模式: 稀釋(a) 配置(b)'+                                                                                         
-                                                                            "\n"+'  稀釋/ 母液濃度(M) / 目標濃度(M) / 所需劑量(mL)'
-                                                                            "\n"+'  配置/ 溶質分子量(g/mol) /目標濃度(M) / 所需劑量(mL)'
-                                                                            "\n"+'輸入範例:'+
-                                                                            "\n"+'ex: a/20/5/20 [稀釋:20 M->5 M 需要20 mL]'
-                                                                            ))   
-        elif message=="input conc. invalid" or message=="condition invalid" or message=="unknow mode":
-            line_bot_api.reply_message(event.reply_token , TextSendMessage(text=message))
-        else:
-            line_bot_api.reply_message(event.reply_token , TextSendMessage(text=message+"\n"+sol))
+            if message=="input invalid":
+                line_bot_api.reply_message(event.reply_token , TextSendMessage(text="<歡迎使用溶液配置計算機>"+
+                                                                                "\n"+'模式: 稀釋(a) 配置(b)'+                                                                                         
+                                                                                "\n"+'  稀釋/ 母液濃度(M) / 目標濃度(M) / 所需劑量(mL)'
+                                                                                "\n"+'  配置/ 溶質分子量(g/mol) /目標濃度(M) / 所需劑量(mL)'
+                                                                                "\n"+'輸入範例:'+
+                                                                                "\n"+'ex: a/20/5/20 [稀釋:20 M->5 M 需要20 mL]'
+                                                                                ))   
+            elif message=="input conc. invalid" or message=="condition invalid" or message=="unknow mode":
+                line_bot_api.reply_message(event.reply_token , TextSendMessage(text=message))
+            else:
+                line_bot_api.reply_message(event.reply_token , TextSendMessage(text=message+"\n"+sol))
     
         
     return "OK"
