@@ -82,11 +82,11 @@ def callback():
             ml=eval(ml)
             target=eval(target)
             
-            if target>0 and ml>0:
+            if target>0 and ml>0 and start>0:
                 if mode == 'a' or mode == "稀釋":
                     if target < start or ml<0:
-                        ans=target*ml/start
-                        others=ml-ans
+                        ans=round(target*ml/start,1)
+                        others=round(ml-ans,1)
                         message='母液濃度:'+str(start)+'M /目標濃度:'+str(target)+'M /所需劑量: '+str(ml)+' mL'
                         sol='配法: 將'+str(ans)+' mL母液加入'+str(others)+' mL溶劑'
                     else:
@@ -94,10 +94,9 @@ def callback():
 
                 if mode == 'b' or mode == "配置":
                     if  start>0 :
-                        ans=target*ml/start
-                        others=ml-ans
+                        ans=round(target*start*ml/1000,2)
                         message='溶質分子量:'+str(start)+'M /目標濃度:'+str(target)+'M /所需劑量: '+str(ml)+' mL'
-                        sol='配法: 將'+str(ans)+' mL母液加入'+str(others)+' mL溶劑'
+                        sol='配法: 將'+str(ans)+' g溶質加入'+str(ml)+' mL溶劑'
                     else:
                         message="input molarity invalid"
             else:
