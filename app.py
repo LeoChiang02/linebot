@@ -82,24 +82,26 @@ def callback():
             ml=eval(ml)
             target=eval(target)
             
-            if mode == 'a' or mode == "稀釋":
-                if target < start or ml<0:
-                    ans=target*ml/start
-                    others=ml-ans
-                    message='母液濃度:'+str(start)+'M /目標濃度:'+str(target)+'M /所需劑量: '+str(ml)+' mL'
-                    sol='配法: 將'+str(ans)+' mL母液加入'+str(others)+' mL溶劑'
-                else:
-                    message="input conc. or condition invalid"
+            if target>0 and ml>0:
+                if mode == 'a' or mode == "稀釋":
+                    if target < start or ml<0:
+                        ans=target*ml/start
+                        others=ml-ans
+                        message='母液濃度:'+str(start)+'M /目標濃度:'+str(target)+'M /所需劑量: '+str(ml)+' mL'
+                        sol='配法: 將'+str(ans)+' mL母液加入'+str(others)+' mL溶劑'
+                    else:
+                        message="input conc. invalid"
 
-            if mode == 'b' or mode == "配置":
-                if 
-                    ans=target*ml/start
-                    others=ml-ans
-                    message='溶質分子量:'+str(start)+'M /目標濃度:'+str(target)+'M /所需劑量: '+str(ml)+' mL'
-                    sol='配法: 將'+str(ans)+' mL母液加入'+str(others)+' mL溶劑'
-                else:
-                    message="input molarity or condition invalid"
-                    
+                if mode == 'b' or mode == "配置":
+                    if  start>0 :
+                        ans=target*ml/start
+                        others=ml-ans
+                        message='溶質分子量:'+str(start)+'M /目標濃度:'+str(target)+'M /所需劑量: '+str(ml)+' mL'
+                        sol='配法: 將'+str(ans)+' mL母液加入'+str(others)+' mL溶劑'
+                    else:
+                        message="input molarity invalid"
+            else:
+                message="condition invalid"
             
         except:
             message="input invalid"
