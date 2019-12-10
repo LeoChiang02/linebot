@@ -86,8 +86,7 @@ def callback():
                 if target < start :
                     ans=target*ml/start
                     others=ml-ans
-                    message='母液濃度:'+str(start)+'M/目標濃度:'+str(target)+'M/所需劑量'+str(ml)+' mL'
-                            +'  配法:將'+str(ans)+' mL母液加入'+str(others)+' mL水'
+                    message='母液濃度:'+str(start)+'M/目標濃度:'+str(target)+'M/所需劑量'+str(ml)+' mL'+'%0D%0A'+'  配法:將'+str(ans)+' mL母液加入'+str(others)+' mL水'
                 else:
                     message="input conc. invalid"
 
